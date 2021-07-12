@@ -22,7 +22,7 @@ const AddItem = ({ setShowAdd, setStale, ...props}) => {
           name,
           quantity: parseInt(quantity)
         }
-        const response = await fetch(`${REACT_APP_API_URL}/items`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/items`, {
           method: 'POST',
           mode: 'cors',
           cache: 'no-cache',

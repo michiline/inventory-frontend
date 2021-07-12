@@ -18,7 +18,7 @@ const Item = ({ item, removeItem }) => {
     
     const increaseQuantity = async () => {
       try {
-        const response = await fetch(`${REACT_APP_API_URL}/items/inc?name=${item.name}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/items/inc?name=${item.name}`, {
           method: 'PATCH',
           mode: 'cors',
           cache: 'no-cache',
@@ -39,7 +39,7 @@ const Item = ({ item, removeItem }) => {
     const decreaseQuantity = async () => {
       try {
         if (parseInt(quantity) === 1) {
-          const response = await fetch(`${REACT_APP_API_URL}/items/inc?name=${item.name}`, {
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/items/inc?name=${item.name}`, {
             method: 'DELETE',
             mode: 'cors',
             cache: 'no-cache',
@@ -52,7 +52,7 @@ const Item = ({ item, removeItem }) => {
             removeItem(item.name)
           }        
         } else {
-          const response = await fetch(`${REACT_APP_API_URL}/items/inc?name=${item.name}`, {
+          const response = await fetch(`${process.env.REACT_APP_API_URL}/items/inc?name=${item.name}`, {
             method: 'PATCH',
             mode: 'cors',
             cache: 'no-cache',
