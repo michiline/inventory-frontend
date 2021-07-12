@@ -11,7 +11,7 @@ const App = () => {
   const [stale, setStale] = useState(true)
 
   const getItems = async () => {
-    const response = await fetch('http://localhost:3000/items')
+    const response = await fetch(`${REACT_APP_API_URL}/items`)
     const resJson = await response.json()
     setItems(resJson)
     setStale(false)
