@@ -6,7 +6,7 @@ const List = ({ items, removeItem }) => {
   return (
     <ListContainer>
       <ListHeader>
-        <Title>Item list:</Title>
+        <Title>Inventory:</Title>
       </ListHeader>
       {items.map(item => <Item key={item.name} removeItem={removeItem} item={item} />)}
     </ListContainer>
@@ -70,12 +70,56 @@ const Item = ({ item, removeItem }) => {
         console.log(err)
       }
     }
+
+    // const changeQuantity = async (newQuantityString) => {
+    //   try {
+    //     const newQuantity = parseInt(newQuantityString)
+    //     if (newQuantity < 0) {
+    //       return
+    //     }
+    //     if (newQuantity === 0) {
+    //       const response = await fetch(`${process.env.REACT_APP_API_URL}/items?name=${item.name}`, {
+    //         method: 'DELETE',
+    //         mode: 'cors',
+    //         cache: 'no-cache',
+    //         credentials: 'omit',
+    //         headers: {
+    //           'Content-Type': 'application/json'
+    //         },
+    //       })
+    //       if (response.status === 200) {
+    //         removeItem(item.name)
+    //       }    
+    //     }
+    //     if (newQuantity > 0) {
+    //       const data = {
+    //         quantity: newQuantity
+    //       }
+    //       const response = await fetch(`${process.env.REACT_APP_API_URL}/items?name=${item.name}`, {
+    //         method: 'PATCH',
+    //         mode: 'cors',
+    //         cache: 'no-cache',
+    //         credentials: 'omit',
+    //         headers: {
+    //           'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //       })
+    //       if (response.status === 200) {
+    //         setQuantity(newQuantityString)
+    //       }
+    //     }
+    //   } catch (err) {
+    //     console.log(err)
+    //   }
+
+    // }
     return (
       <ListRow>
         <ListLabel>{item.name}</ListLabel>
         <ListItem>
           <DecQuantityIcon onClick={decreaseQuantity}/>
-          <QuantityInput width={'50px'} value={quantity} />
+          <QuantityInput width={'50px'} value={quantity} readOnly/>
           <IncQuantityIcon onClick={increaseQuantity}/>
         </ListItem>
       </ListRow>

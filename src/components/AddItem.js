@@ -47,7 +47,7 @@ const AddItem = ({ setShowAdd, setStale, ...props}) => {
         </DividerRow>
         <Header>
           <Title>
-            Add item:
+            Add an item:
           </Title>
         </Header>
         <AddRow>
@@ -85,7 +85,7 @@ const AddItem = ({ setShowAdd, setStale, ...props}) => {
       -moz-transition: height 0.5s ease-out;
     overflow: hidden;
     ${props => props.showAdd && css`
-      height: 275px;
+      height: 300px;
       transition: height 0.5s ease-out -0.1s;
       -moz-transition: height 0.5s ease-out -0.1s;
     `}
@@ -117,10 +117,10 @@ const AddItem = ({ setShowAdd, setStale, ...props}) => {
     text-align: ${props => props.textAlign ? props.textAlign : 'center'};
     border: 1px solid #55DBCB4A;
     border-radius: 8px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     font-size: 16px;
     margin-left: 10px;
     margin-right: 10px;
@@ -153,10 +153,10 @@ const AddItem = ({ setShowAdd, setStale, ...props}) => {
     border: none;
     font-size: 16px;
     border-radius: 16px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     margin-left: 10px;
     &:first-of-type {
       margin-left: 0;

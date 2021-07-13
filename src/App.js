@@ -8,7 +8,9 @@ import { AddItemIcon } from './components/Icons'
 const App = () => {
   const [showAdd, setShowAdd] = useState(false)
   const [items, setItems] = useState([])
+  const [filteredItems, setFilteredItems] = useState([])
   const [stale, setStale] = useState(true)
+  const [search, setSearch] = useState('')
 
   const getItems = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/items`)
@@ -26,15 +28,21 @@ const App = () => {
       getItems()
     }
   })
+
+  useEffect(() => {
+    const f = items.filter(({ name }) => name.includes(search))
+    console.log(f)
+    setFilteredItems(f)
+  }, [search, items])
   return (
     <>
       <GlobalStyle/>
       <Body>
         <Center>
-          <SearchInput placeholder='Search for an item...'/>
+          <SearchInput placeholder='Search for an item...' value={search} onChange={e => setSearch(e.target.value)}/>
           <AddItemIcon onClick={() => setShowAdd(!showAdd)} marginTop='10px'/>
           <AddItem showAdd={showAdd} setShowAdd={setShowAdd} setStale={setStale}/>
-          <List removeItem={removeItem} items={items} />
+          <List removeItem={removeItem} items={filteredItems} />
         </Center>
       </Body>
     </>
@@ -65,10 +73,10 @@ const Center = styled.div`
 
 const SearchInput = styled.input`
   width: 100%;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   font-size: 16px;
   border: 1px solid #55DBCB4A;
   border-radius: 8px;
