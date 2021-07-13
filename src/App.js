@@ -30,7 +30,12 @@ const App = () => {
   })
 
   useEffect(() => {
-    const f = items.filter(({ name }) => name.toLowerCase().includes(search.toLowerCase()))
+    const f = items.filter(({ name }) => {
+      console.log(name.toLowerCase())
+      console.log(search.toLowerCase())
+      console.log(name.toLowerCase().includes(search.toLowerCase()))
+      return name.toLowerCase().includes(search.toLowerCase())
+    })
     console.log(f)
     setFilteredItems(f)
   }, [search, items])
